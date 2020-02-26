@@ -9,6 +9,9 @@ path='../ProgettoIot/Progetto/KMeans/'
 
 image=io.imread(path+'tiger.png')
 rows,cols=image.shape[0],image.shape[1]
+
+print(rows)
+
 image=image.reshape(rows*cols,3)
 tempi={}
 
