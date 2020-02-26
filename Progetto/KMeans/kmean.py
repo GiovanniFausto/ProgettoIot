@@ -16,8 +16,8 @@ print(rows)
 image=image.reshape(rows*cols,3)
 tempi={}
 
-numCluster=72
-numIter=55
+numCluster=24
+numIter=20
 
 def process(ncluster,maxiter):
 
@@ -32,8 +32,11 @@ def process(ncluster,maxiter):
     clusters= np.asarray(kmeans.cluster_centers_,dtype=np.uint8)#in pratica li porta in int sono i centri
     labels=np.asarray(kmeans.labels_,dtype=np.uint8)#li mette come arrai
     labels=labels.reshape(rows,cols)#li porta a matrice 
+
     dest=path+str(ncluster)+'_cluster' #crea la cartella col numero di cluster
     Path(dest).mkdir(parents=True, exist_ok=True)
+
+
     np.save(dest+'/codebook_tiger'+str(maxiter) +'_iter.npy',clusters)
     io.imsave(dest+'/compressed_tiger'+str(maxiter)+'_iter.png',labels)
 
@@ -45,8 +48,10 @@ for i in range(8,numCluster,8):#cluster
         print(tempi)#mette i tempi di ogni esecuzione
         
 
+dest=path+'dati' #crea la cartella col numero di cluster
+Path(dest).mkdir(parents=True, exist_ok=True)
 #per scrivere i tempi in csv
-with open(path+'/tempi.csv', 'w', newline="") as csv_file:  
+with open(path+'/dati/tempi.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
     for key, value in tempi.items():
        writer.writerow([key, value])

@@ -2,13 +2,13 @@ import numpy as np
 import imageio as io
 import os
 import csv
-
+from pathlib import Path
 
 path='../ProgettoIot/Progetto/KMeans/'
 dimensioni={}
 
-numCluster=72
-numIter=55
+numCluster=24
+numIter=20
 
 def ricostruzione(cluster,iterazioni):
     srccb=path+str(cluster)+'_cluster/codebook_tiger'+str(iterazioni)+'_iter.npy'
@@ -22,7 +22,9 @@ def ricostruzione(cluster,iterazioni):
         for j in range(cols):
             image[i,j,:]=centers[c_image[i,j],:]#prendendo nella c_image un pixel che ha un valore da 0 a k e con questo prendo una riga di centers che ha il colore
 
-    dest=path+str(cluster)+'_'+str(iterazioni)+'_tigrericostruita.png'
+    dest=path+'ricostruzione'
+    Path(dest).mkdir(parents=True, exist_ok=True)
+    dest=path+'ricostruzione/'+str(cluster)+'_'+str(iterazioni)+'_tigrericostruita.png'
     io.imsave(dest,image)
     info=os.stat(dest)
 
@@ -38,9 +40,13 @@ for i in range(8,numCluster,8):#cluster
         print('cluster: ',i,' iterazionie: ',j)
         ricostruzione(i,j)
         print(dimensioni)
-       
+
+
+dest=path+'dati' #crea la cartella col numero di cluster
+Path(dest).mkdir(parents=True, exist_ok=True)
+
 #per salvare i dati in csv
-with open(path+'/dimensioni.csv', 'w', newline="") as csv_file:  
+with open(path+'/dati/dimensioni.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
     for key, value in dimensioni.items():
        writer.writerow([key, value])
