@@ -6,6 +6,7 @@ from pathlib import Path
 
 path='../ProgettoIot/Progetto/KMeans/'
 dimensioni={}
+dimensioninere={}
 
 numCluster=72
 numIter=55
@@ -29,10 +30,14 @@ def ricostruzione(cluster,iterazioni):
 
     dest=path+'ricostruzione/'+str(cluster)+'_'+str(iterazioni)+'_tigrericostruita.png' #creo path dove salvare la nuova immagine
     io.imsave(dest,image)
+
     info=os.stat(dest)#serve per prendere la dimensione e salvarla
+    info2=os.stat(srcim)
 
     key=str(cluster)+'_'+str(iterazioni)# crea le chiavi per i tempi
+
     dimensioni[str(key)]=info.st_size/1024 #ho i tempi delle varie esecuzioni
+    dimensioninere[str(key)]=info2.st_size/1024
 
     #print('dimensione ricostruita:  ',info.st_size/1024,'KB')
 
@@ -45,6 +50,7 @@ for i in range(8,numCluster,8):#cluster
         #print(dimensioni)
 
 
+
 dest=path+'dati' 
 Path(dest).mkdir(parents=True, exist_ok=True)
 
@@ -52,4 +58,10 @@ Path(dest).mkdir(parents=True, exist_ok=True)
 with open(path+'/dati/dimensioni.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
     for key, value in dimensioni.items():
+       writer.writerow([key, value])
+
+
+with open(path+'/dati/dimensioninere.csv', 'w', newline="") as csv_file:  
+    writer = csv.writer(csv_file)
+    for key, value in dimensioninere.items():
        writer.writerow([key, value])
