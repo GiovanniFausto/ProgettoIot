@@ -7,8 +7,8 @@ from pathlib import Path
 path='../ProgettoIot/Progetto/KMeans/'
 dimensioni={}
 
-numCluster=24
-numIter=20
+numCluster=72
+numIter=55
 
 def ricostruzione(cluster,iterazioni):
     srccb=path+str(cluster)+'_cluster/codebook_tiger'+str(iterazioni)+'_iter.npy' # prendo il file con i dati del kmeans i centroidi
