@@ -12,6 +12,9 @@ rows,cols=image.shape[0],image.shape[1]
 image=image.reshape(rows*cols,3)
 tempi={}
 
+numCluster=72
+numIter=55
+
 def process(ncluster,maxiter):
 
     tmp1=time.time()
@@ -30,14 +33,15 @@ def process(ncluster,maxiter):
     np.save(dest+'/codebook_tiger'+str(maxiter) +'_iter.npy',clusters)
     io.imsave(dest+'/compressed_tiger'+str(maxiter)+'_iter.png',labels)
 
-for i in range(8,72,8):#cluster
-    for j in range(5,55,5):#iterazioni
+#per calcolare il kmeans
+for i in range(8,numCluster,8):#cluster
+    for j in range(5,numIter,5):#iterazioni
         print('cluster: ',i,' iterazionie: ',j)
         process(i,j)
         print(tempi)#mette i tempi di ogni esecuzione
         
 
-
+#per scrivere i tempi in csv
 with open(path+'/tempi.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
     for key, value in tempi.items():
