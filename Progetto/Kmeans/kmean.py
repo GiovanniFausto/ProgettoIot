@@ -4,11 +4,16 @@ import numpy as np
 from pathlib import Path
 import time
 import csv
+import os
 
 path='../ProgettoIot/Progetto/KMeans/'
 
 image=io.imread(path+'tiger.png')
+io.imshow(image) # plotting the image 
+io.show()
+
 rows,cols=image.shape[0],image.shape[1]
+
 image=image.reshape(rows*cols,3)
 tempi={}
 
