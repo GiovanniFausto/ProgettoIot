@@ -6,7 +6,7 @@ import time
 import csv
 
 path='../ProgettoIot/Progetto/KMeans/'
-
+print('ciaociao')
 image=io.imread(path+'tiger.png')
 rows,cols=image.shape[0],image.shape[1]
 
