@@ -14,7 +14,7 @@ x2=[]
 y2=[]
 z2=[]
 
-with open(path+'tempi.csv', 'r') as csvfile:
+with open(path+'dimensioni.csv', 'r') as csvfile:
     plots= csv.reader(csvfile, delimiter=',')
     for row in plots:
         if int(row[1])==50: #con 50 iter
@@ -44,11 +44,11 @@ iter5 = plt.Line2D([], [], color='red', marker='+',markersize=15, label='5 itera
 iter25 = plt.Line2D([], [], color='green', marker='*',markersize=15, label='25 iterazioni')
 plt.legend(handles=[iter5,iter25,iter50])
 
-plt.title('Data from the CSV File')
+plt.title('Dati dal file dimensioni.csv')
 plt.xlabel('Cluster')
-plt.ylabel('Secondi')
+plt.ylabel('KB')
 
 plt.xticks(np.arange(0, 72, 8)) 
-plt.yticks(np.arange(0, 55, 5)) 
+plt.yticks(np.arange(100, 500, 50)) 
 
 plt.show()
