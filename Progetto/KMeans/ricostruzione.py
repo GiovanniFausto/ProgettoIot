@@ -12,6 +12,8 @@ numCluster=72
 numIter=55
 
 def ricostruzione(cluster,iterazioni):
+    key=str(cluster)# crea le chiavi per i tempi
+    key2=str(iterazioni)
     srccb=path+str(cluster)+'_cluster/codebook_tiger'+str(iterazioni)+'_iter.npy' # prendo il file con i dati del kmeans i centroidi
     srcim=path+str(cluster)+'_cluster/compressed_tiger'+str(iterazioni)+'_iter.png' # prendo l'immagine dove ci stanno le informazioni
 
@@ -34,10 +36,9 @@ def ricostruzione(cluster,iterazioni):
     info=os.stat(dest)#serve per prendere la dimensione e salvarla
     info2=os.stat(srcim)
 
-    key=str(cluster)+'_'+str(iterazioni)# crea le chiavi per i tempi
-
-    dimensioni[str(key)]=info.st_size/1024 #ho i tempi delle varie esecuzioni
-    dimensioninere[str(key)]=info2.st_size/1024
+    
+    dimensioni[str(key), str(key2)]=info.st_size/1024 #ho i tempi delle varie esecuzioni
+    dimensioninere[str(key), str(key2)]=info2.st_size/1024
 
     #print('dimensione ricostruita:  ',info.st_size/1024,'KB')
 
@@ -57,11 +58,11 @@ Path(dest).mkdir(parents=True, exist_ok=True)
 #per salvare i dati in csv
 with open(path+'/dati/dimensioni.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
-    for key, value in dimensioni.items():
-       writer.writerow([key, value])
+    for [key,key2], value in dimensioni.items():
+       writer.writerow([key,key2, value])
 
 
 with open(path+'/dati/dimensioninere.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
-    for key, value in dimensioninere.items():
-       writer.writerow([key, value])
+    for [key,key2], value in dimensioninere.items():
+       writer.writerow([key,key2, value])

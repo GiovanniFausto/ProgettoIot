@@ -14,8 +14,8 @@ image=image.reshape(rows*cols,3)# la porta in un'unica vettore
 tempi={} #per salvare i tempi di esecuzione
 
 #seleziono i valori del test
-numCluster=48
-numIter=20
+numCluster=72
+numIter=55
 
 # per i vari casi di kmeans
 def process(ncluster,maxiter):
@@ -45,7 +45,7 @@ def process(ncluster,maxiter):
 #per calcolare il kmeans
 for i in range(8,numCluster,8):#cluster
     for j in range(5,numIter,5):#iterazioni
-        #print('cluster: ',i,' iterazionie: ',j)
+        print('cluster: ',i,' iterazionie: ',j)
         process(i,j)
         #print(tempi)#mette i tempi di ogni esecuzione
         
