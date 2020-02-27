@@ -17,7 +17,7 @@ z2=[]
 with open(path+'dimensioninere.csv', 'r') as csvfile:
     plots= csv.reader(csvfile, delimiter=',')
     for row in plots:
-        if int(row[1])==50: #con 50 iter
+        if int(row[1])==40: #con 40 iter
             x.append(int(row[0]))#num cluster
             y.append(int(row[1]))#iterazion
             z.append(float(row[2]))#tempi
@@ -36,7 +36,7 @@ plt.plot(x1, z1, label= "stars", color= "red",marker='+')
 plt.plot(x2, z2, label= "stars", color= "green",marker='*') 
 
 
-iter50 = plt.Line2D([], [], color='blue', marker='o',markersize=5, label='50 iterazioni')
+iter50 = plt.Line2D([], [], color='blue', marker='o',markersize=5, label='40 iterazioni')
 iter5 = plt.Line2D([], [], color='red', marker='+',markersize=15, label='5 iterazioni')
 iter25 = plt.Line2D([], [], color='green', marker='*',markersize=15, label='25 iterazioni')
 plt.legend(handles=[iter5,iter25,iter50])
