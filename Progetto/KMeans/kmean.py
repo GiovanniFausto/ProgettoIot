@@ -14,8 +14,8 @@ image=image.reshape(rows*cols,3)# la porta in un'unica vettore
 tempi={} #per salvare i tempi di esecuzione
 
 #seleziono i valori del test
-numCluster=72
-numIter=55
+numCluster=48
+numIter=20
 
 # per i vari casi di kmeans
 def process(ncluster,maxiter):
@@ -27,8 +27,9 @@ def process(ncluster,maxiter):
 
     tmp=time.time()-tmp1#calcolo il tempo di esecuzione
 
-    key=str(ncluster)+'_'+str(maxiter)# crea le chiavi per i tempi clu_iter
-    tempi[str(key)]=tmp #ho i tempi delle varie esecuzioni
+    key=str(ncluster)
+    key2=str(maxiter)# crea le chiavi per i tempi clu_iter
+    tempi[str(key), str(key2)]=tmp #ho i tempi delle varie esecuzioni
     
     clusters= np.asarray(kmeans.cluster_centers_,dtype=np.uint8)#in pratica li porta in int sono i centri
     labels=np.asarray(kmeans.labels_,dtype=np.uint8)#li mette come arrai
@@ -54,7 +55,7 @@ Path(dest).mkdir(parents=True, exist_ok=True)
 #per scrivere i tempi in csv
 with open(path+'/dati/tempi.csv', 'w', newline="") as csv_file:  
     writer = csv.writer(csv_file)
-    for key, value in tempi.items():
-       writer.writerow([key, value])
+    for [key, key2], value in tempi.items():
+       writer.writerow([key, key2, value])
 
 
