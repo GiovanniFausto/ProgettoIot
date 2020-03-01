@@ -47,25 +47,25 @@ with open(path+'dimensioninere.csv', 'r') as csvfile:
 #print(dati)
 
 for x in dati:
-    tempiloramax.append(dati[x]/lorawandataratemax)
-    tempiloramin.append(dati[x]/lorawandataratemin)
+    tempiloramax.append(dati[x]/lorawandataratemin)# il tempo è massimo quando il data rate è minimo consumo meno potenzaa
+    tempiloramin.append(dati[x]/lorawandataratemax)
 
 for x in dati:
-    tempinbmax.append(dati[x]/nbiotdataremax)
-    tempinbmin.append(dati[x]/nbiotdataremin)
+    tempinbmax.append(dati[x]/nbiotdataremin)# il tempo è massimo quando il data rate è minimo consumo meno potenzaa
+    tempinbmin.append(dati[x]/nbiotdataremax)
 
-
+'''
 print(tempiloramin,tempiloramax)
 print('\n')
 print(tempinbmin,tempinbmax)
-
+'''
 #nb più veloce ci sta meno tempo
 
-consumiloramin=np.array(tempiloramin)*lorawanmin
-consumiloramax=np.array(tempiloramax)*lorawanmax
-consuminbmin=np.array(tempinbmin)*nbiotmax
-consuminbmax=np.array(tempinbmax)*nbiotmin
-print(consumiloramin,consumiloramax,consuminbmin,consuminbmax)
+consumiloramin=np.array(tempiloramax)*lorawanmin
+consumiloramax=np.array(tempiloramin)*lorawanmax
+consuminbmin=np.array(tempinbmax)*nbiotmin
+consuminbmax=np.array(tempinbmin)*nbiotmax
+print('\nloramin',consumiloramin,'\nloramx',consumiloramax,'\nnbmin',consuminbmin,'\nnbmax',consuminbmax)
 
 
 
