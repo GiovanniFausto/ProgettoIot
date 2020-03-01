@@ -41,7 +41,7 @@ iter5 = plt.Line2D([], [], color='red', marker='+',markersize=15, label='5 itera
 iter25 = plt.Line2D([], [], color='green', marker='*',markersize=15, label='25 iterazioni')
 plt.legend(handles=[iter5,iter25,iter50])
 
-plt.title('Dati dal file ssim.csv')
+plt.title('Dati SSIM')
 plt.xlabel('Cluster')
 plt.ylabel('SSIM')
 
