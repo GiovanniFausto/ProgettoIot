@@ -28,6 +28,7 @@ tempiloramin=[]
 tempiloramax=[]
 tempinbmin=[]
 tempinbmax=[]
+dim=[]
 '''
 consumiloramin=[]
 consumiloramax=[]
@@ -46,9 +47,9 @@ with open(path+'dati/dimensioninere.csv', 'r') as csvfile:
 
 
 #print(dati)
-info=os.stat(path+'tiger.png')#serve per prendere la dimensione e salvarla
+#info=os.stat(path+'tiger.png')#serve per prendere la dimensione e salvarla
 
-dati['origina']=(info.st_size/1024)*8192
+#dati['original']=(info.st_size/1024)*8192
 
 
 
@@ -60,37 +61,46 @@ for x in dati:
     tempinbmax.append(dati[x]/nbiotdataremin)# il tempo è massimo quando il data rate è minimo consumo meno potenzaa
     tempinbmin.append(dati[x]/nbiotdataremax)# il tempo è minimo se trasmettiamo a data rate alti
 
+for x in dati:
+   dim.append(dati[x]/8192)
+
+
+
+
 tempiloramin=[int(i) for i in tempiloramin]
 tempiloramax=[int(i) for i in tempiloramax]
 tempinbmax=[int(i) for i in tempinbmax]
 tempinbmin=[int(i) for i in tempinbmin]
+dim=[int(i) for i in dim]
 
-
+print(dim)
+'''
 
 print(tempiloramin,tempiloramax)
 print('\n')
 print(tempinbmin,tempinbmax)
-
-info=os.stat(path+'tiger.png')#serve per prendere la dimensione e salvarla
-print(info.st_size/1024)
-
-plt.plot(x, z, label= "stars", color= "blue",marker='o') 
-#plt.plot(x1, z1, label= "stars", color= "red",marker='+') 
-#plt.plot(x2, z2, label= "stars", color= "green",marker='*') 
+'''
 
 
-#iter50 = plt.Line2D([], [], color='blue', marker='o',markersize=5, label='40 iterazioni')
-#iter5 = plt.Line2D([], [], color='red', marker='+',markersize=15, label='5 iterazioni')
-#iter25 = plt.Line2D([], [], color='green', marker='*',markersize=15, label='25 iterazioni')
-#plt.legend(handles=[iter5,iter25,iter50])
+plt.plot(dim,tempiloramin, label= "stars", color= "blue",marker='o') 
+#plt.plot(dim,tempiloramax, label= "stars", color= "purple",marker='+') 
+plt.plot(dim,tempinbmin, label= "stars", color= "green",marker='*') 
+plt.plot(dim,tempinbmax, label= "stars", color= "red",marker='v') 
 
+'''
+iter50 = plt.Line2D([], [], color='blue', marker='o',markersize=5, label='40 iterazioni')
+iter5 = plt.Line2D([], [], color='red', marker='+',markersize=15, label='5 iterazioni')
+iter25 = plt.Line2D([], [], color='green', marker='*',markersize=15, label='25 iterazioni')
+''
+plt.legend(handles=[iter5,iter25,iter50])
+'''
 plt.title('Dati immagini contenenti etichette')
-plt.xlabel('Cluster')
-plt.ylabel('KB')
-
+plt.xlabel('Dim KB')
+plt.ylabel('Tempi S')
+'''
 plt.xticks(np.arange(0, 72, 8)) 
 plt.yticks(np.arange(100, 400, 50)) 
-
+'''
 plt.show()
 
 
