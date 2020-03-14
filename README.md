@@ -16,5 +16,15 @@ pip install csv
 ```
 
 ## Run application
+
+```bash
 python kmeans.py
 python ricostruzione.py
+python calcolaPSNR.py
+python calcolaSSIM.py
+python plot_dimensioni.py
+python plot_dimensioninere.py
+python plot_PSNR.py
+python plot_SSIM.py
+python plot_tempi.py
+```
