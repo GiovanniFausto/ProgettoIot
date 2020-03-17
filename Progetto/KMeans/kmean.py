@@ -32,7 +32,7 @@ def process(ncluster,maxiter):
     tempi[str(key), str(key2)]=tmp #ho i tempi delle varie esecuzioni
     
     clusters= np.asarray(kmeans.cluster_centers_,dtype=np.uint8)#in pratica li porta in int sono i centri
-    labels=np.asarray(kmeans.labels_,dtype=np.uint8)#li mette come arrai
+    labels=np.asarray(kmeans.labels_,dtype=np.uint8)#li mette come array
     labels=labels.reshape(rows,cols)#li porta a matrice 
 
     dest=path+str(ncluster)+'_cluster' #crea la cartella col numero di cluster

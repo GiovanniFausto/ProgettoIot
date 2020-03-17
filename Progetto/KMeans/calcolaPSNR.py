@@ -22,10 +22,8 @@ for i in range(8,numCluster,8):#cluster
     for j in range(5,numIter,5):#iterazioni
         src=path+'ricostruzione/'+str(i)+'_'+str(j)+'_tigrericostruita.png'
         img2=cv2.imread(src)
-        #print('cluster: ',i,' iterazionie: ',j)
-        #print(src)
         cpsnr(img1,img2,i,j)
-        #print(psnrdati)
+
 
 
 dest=path+'dati'

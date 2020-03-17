@@ -20,15 +20,15 @@ with open(path+'dimensioninere.csv', 'r') as csvfile:
         if int(row[1])==40: #con 40 iter
             x.append(int(row[0]))#num cluster
             y.append(int(row[1]))#iterazion
-            z.append(float(row[2]))#tempi
+            z.append(float(row[2]))#dim
         if int(row[1])==5:#con 5 iter
             x1.append(int(row[0]))#num cluster
             y1.append(int(row[1]))#iterazion
-            z1.append(float(row[2]))#tempi
+            z1.append(float(row[2]))#dim
         if int(row[1])==25:#con 25 iter
             x2.append(int(row[0]))#num cluster
             y2.append(int(row[1]))#iterazion
-            z2.append(float(row[2]))#tempi
+            z2.append(float(row[2]))#dim
 
     
 plt.plot(x, z, label= "stars", color= "blue",marker='o') 

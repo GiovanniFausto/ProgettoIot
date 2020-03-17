@@ -40,15 +40,14 @@ def ricostruzione(cluster,iterazioni):
     dimensioni[str(key), str(key2)]=info.st_size/1024 #ho i tempi delle varie esecuzioni
     dimensioninere[str(key), str(key2)]=info2.st_size/1024
 
-    #print('dimensione ricostruita:  ',info.st_size/1024,'KB')
+   
 
 
 #per ricostruire le immagini
 for i in range(8,numCluster,8):#cluster
     for j in range(5,numIter,5):#iterazioni
-        #print('cluster: ',i,' iterazionie: ',j)
         ricostruzione(i,j)
-        #print(dimensioni)
+        
 
 
 
